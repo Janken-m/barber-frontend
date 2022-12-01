@@ -36,7 +36,6 @@ const Navbar = () => {
               <ListItem>
                 <li onClick={() => navigate("/bookning")}>Booka Tid</li>
                 <li onClick={() => navigate("/products")}> Shop </li>
-                <li> Frisörer</li>
               </ListItem>
               <ButtonStyle>
                 <button style={{ marginRight: "1rem" }}> Login </button>
