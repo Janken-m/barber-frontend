@@ -56,7 +56,7 @@ const Continer = styled.div`
 `;
 
 const Left = styled.div`
-  border: 2px solid red;
+  /* border: 2px solid red; */
   grid-area: left;
   display: flex;
   flex-direction: column;
@@ -71,12 +71,12 @@ const Left = styled.div`
   }
 `;
 const Right = styled.div`
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   grid-area: right;
   display: flex;
 `;
 const Mail = styled.div`
-  border: 2px solid yellow;
+  /* border: 2px solid yellow; */
   grid-area: mail;
   display: flex;
   justify-content: center;
@@ -112,7 +112,7 @@ const Mail = styled.div`
   }
 `;
 const Map = styled.div`
-  border: 2px solid pink;
+  /* border: 2px solid pink; */
   grid-area: map;
   display: flex;
 `;
