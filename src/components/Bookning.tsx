@@ -51,7 +51,7 @@ const Bookning = () => {
             onChange={(e) => setName(e.target.value)}
           />
           <Dropdown>
-            <select onChange={onChange}>
+            <select onChange={onChange} value={stylistId}>
               <option value="" disabled={true}>
                 {" "}
                 Välj Frisör{" "}
