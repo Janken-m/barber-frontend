@@ -4,6 +4,7 @@ import SearchBox from "../common/SearchBox";
 import { useGetProductsQuery } from "../store/Api";
 import { IProduct } from "../types/IProduct";
 import Product from "./Product";
+import Spinner from "../assets/svg/Spinner";
 
 const ProductsList = () => {
   const { data: Products = [], isLoading } = useGetProductsQuery("products");
@@ -30,6 +31,18 @@ const ProductsList = () => {
       <Right>
         {FilterProduct?.map((product: IProduct) => (
           <div>
+            {isLoading && (
+              <div
+                style={{
+                  display: "flex",
+                  height: "100vh",
+                  justifyContent: "center",
+                }}
+              >
+                {" "}
+                <Spinner />{" "}
+              </div>
+            )}
             <Product product={product} isLoading={isLoading} />
           </div>
         ))}

@@ -59,7 +59,6 @@ const Navbar = () => {
         <Right>
           <li onClick={() => navigate("/bookning")}>Booka Tid</li>
           <li onClick={() => navigate("/products")}> Shop </li>
-          <li> Frisörer </li>
         </Right>
       </Continer>
     </>

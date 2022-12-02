@@ -16,18 +16,16 @@ const Main = () => {
           </h1>
           <ul className="dynamic-txts">
             <li>
-              <span> Style </span>
+              <span> STIL </span>
             </li>
             <li>
-              <span> Frisyr </span>
+              <span> FRISYR </span>
             </li>
             <li>
-              <span> Hårvård </span>
-            </li>
-            <li>
-              <span> Klippning </span>
+              <span> HÅRVÅRD </span>
             </li>
           </ul>
+          <Button> Booka Online </Button>
         </div>
       </Continer>
     </div>
@@ -79,5 +77,26 @@ const TextAnimation = styled.h1`
 
   @media screen and (max-width: 768px) {
     display: none;
+  }
+`;
+
+const Button = styled.button`
+  background: linear-gradient(90deg, #000, var(--button), #000);
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: 700;
+
+  :hover {
+    background: linear-gradient(
+      90deg,
+      var(--button),
+      var(--button),
+      var(--button)
+    );
+    border-radius: 1rem;
+  }
+
+  :active {
+    transform: scale(1.2);
   }
 `;
