@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import "../assets/css/Main.css";
 
 const Main = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <TextPlace>
@@ -25,7 +27,7 @@ const Main = () => {
               <span> HÅRVÅRD </span>
             </li>
           </ul>
-          <Button> Booka Online </Button>
+          <Button onClick={() => navigate("/bookning")}> Booka Online </Button>
         </div>
       </Continer>
     </div>
