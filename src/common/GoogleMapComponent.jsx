@@ -7,7 +7,7 @@ const GoogleMapComponent = () => {
       <div className="gmap_canvas">
         <iframe
           width={652}
-          height={493}
+          height={450}
           id="gmap_canvas"
           src="https://maps.google.com/maps?q=helsingborg&t=&z=13&ie=UTF8&iwloc=&output=embed"
           frameBorder={0}
@@ -15,9 +15,6 @@ const GoogleMapComponent = () => {
           marginHeight={0}
           marginWidth={0}
         />
-        <a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/">
-          divi discount
-        </a>
         <br />
         <style
           dangerouslySetInnerHTML={{
@@ -25,7 +22,6 @@ const GoogleMapComponent = () => {
               ".mapouter{position:relative;text-align:right;height:493px;width:652px;}",
           }}
         />
-        <a href="https://www.embedgooglemap.net">google maps for my website</a>
         <style
           dangerouslySetInnerHTML={{
             __html:

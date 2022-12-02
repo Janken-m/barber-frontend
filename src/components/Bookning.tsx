@@ -1,56 +1,85 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styled from "styled-components";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import GoogleMapComponent from "../common/GoogleMapComponent";
-import { useGetStylistQuery } from "../store/Api";
+import { useGetStylistQuery, useAddBookningMutation } from "../store/Api";
 import { FiMail } from "react-icons/fi";
 import { VscLocation } from "react-icons/vsc";
+import dayjs from "dayjs";
+import { toast } from "react-toastify";
 
 const Bookning = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const [name, setName] = useState<string>("");
   const [stylistId, setStylistId] = useState("");
   const { data: stylist } = useGetStylistQuery("stylist");
+  const [AddBookning] = useAddBookningMutation();
 
   const onChange = ({ target: { value } }: ChangeEvent<HTMLSelectElement>) => {
     console.log("dropdown check", value);
     setStylistId(value);
   };
 
+  const dateFormat = dayjs(startDate).format("dddd, MMMM D, YYYY h:mm A");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    try {
+      await AddBookning({
+        name: name,
+        date: dateFormat,
+        StylistId: stylistId,
+      });
+
+      toast.success(`Tack ${name} Tiden är bookad, vi ses snart!`);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <Continer>
       <Right></Right>
       <Left>
-        <h4>Online Bookning</h4>
-        <Dropdown>
-          <select onChange={onChange}>
-            <option value="" disabled={true}>
-              {" "}
-              Välj Frisör{" "}
-            </option>
-            {stylist?.map((style: any) => (
-              <option key={style._id} value={style._id}>
+        <form onSubmit={handleSubmit}>
+          <h4>Online Bookning</h4>
+          <Input
+            type="text"
+            placeholder="Ditt namn... "
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Dropdown>
+            <select onChange={onChange}>
+              <option value="" disabled={true}>
                 {" "}
-                {style.name} <img src={style.image} />
+                Välj Frisör{" "}
               </option>
-            ))}
-          </select>
-        </Dropdown>
-        <DatePicker
-          // timeInputLabel="Time:"
-          // showTimeInput
-          isClearable
-          selected={startDate}
-          timeFormat="p"
-          locale="pt-GMT"
-          showTimeSelect
-          timeIntervals={15}
-          dateFormat="Pp"
-          placeholderText="Välj tid för Klippning..."
-          onChange={(date: Date) => setStartDate(date)}
-          className="calendar"
-        ></DatePicker>
+              {stylist?.map((style: any) => (
+                <option key={style._id} value={style._id}>
+                  {" "}
+                  {style.name}{" "}
+                </option>
+              ))}
+            </select>
+          </Dropdown>
+          <DatePicker
+            // timeInputLabel="Time:"
+            // showTimeInput
+            isClearable
+            selected={startDate}
+            timeFormat="p"
+            locale="pt-GMT"
+            showTimeSelect
+            timeIntervals={15}
+            dateFormat="Pp"
+            placeholderText="Välj tid för Klippning..."
+            onChange={(date: Date) => setStartDate(date)}
+            className="calendar"
+          ></DatePicker>
+          <Button type="submit"> Booka </Button>
+        </form>
       </Left>
 
       <Map>
@@ -109,6 +138,46 @@ const Left = styled.div`
     padding: 1rem;
     border-radius: 1rem;
     width: 18rem;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--button);
+    width: 330px;
+    border-radius: 10px;
+    padding: 40px 30px;
+    box-shadow: -3px -3px 9px #aaa9a9a2, 3px 3px 7px rgba(147, 149, 151, 0.671);
+  }
+`;
+
+const Button = styled.button`
+  border: none;
+  background-color: var(--button);
+  padding: 0.4rem;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  margin-top: 1rem;
+  cursor: pointer;
+
+  :hover {
+    transform: scale(1.2);
+  }
+  :active {
+    transform: scale(1);
+  }
+`;
+
+const Input = styled.input`
+  padding: 0.7rem;
+  border-radius: 1rem;
+  width: 18rem;
+
+  ::placeholder {
+    text-align: center;
   }
 `;
 
@@ -143,7 +212,12 @@ const Mail = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    border: 1px solid var(--button);
+    width: 330px;
+    border-radius: 10px;
+    padding: 40px 30px;
+    margin-top: 100px;
+    box-shadow: -3px -3px 9px #aaa9a9a2, 3px 3px 7px rgba(147, 149, 151, 0.671);
 
     input {
       border: none;

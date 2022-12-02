@@ -14,7 +14,18 @@ export const Api = createApi({
       query: () => "/stylist",
       providesTags: ["Stylist"],
     }),
+    AddBookning: builder.mutation({
+      query: ({ name, date, StylistId }) => ({
+        url: `/bookning`,
+        method: "POST",
+        body: { name, date, StylistId },
+      }),
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useGetStylistQuery } = Api;
+export const {
+  useGetProductsQuery,
+  useGetStylistQuery,
+  useAddBookningMutation,
+} = Api;
