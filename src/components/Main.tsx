@@ -6,6 +6,9 @@ const Main = () => {
   const navigate = useNavigate();
   return (
     <div>
+      <Image>
+        <img src="https://res.cloudinary.com/dylxgsias/image/upload/c_crop,h_1396,x_-200,y_274/v1670375914/BarberShop/ground_kxjdtw.jpg" />
+      </Image>
       <TextPlace>
         <TextAnimation>
           <span>ÖVER 20 ÅRS</span> <span>ERFARENHET</span>
@@ -16,17 +19,9 @@ const Main = () => {
           <h1 className="static-text">
             Vi ge dig <br /> den <br /> bästa
           </h1>
-          <ul className="dynamic-txts">
-            <li>
-              <span> STIL </span>
-            </li>
-            <li>
-              <span> FRISYR </span>
-            </li>
-            <li>
-              <span> HÅRVÅRD </span>
-            </li>
-          </ul>
+          <h1>
+            STYL <span> FRISYR </span> <span> HÅRVÅRD </span>
+          </h1>
           <Button onClick={() => navigate("/bookning")}> Booka Online </Button>
         </div>
       </Continer>
@@ -46,10 +41,21 @@ const Continer = styled.div`
   }
 `;
 
+const Image = styled.div`
+  width: 100%;
+
+  img {
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+  }
+`;
+
 const TextPlace = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 20vh;
 `;
 
 const TextAnimation = styled.h1`
@@ -83,10 +89,13 @@ const TextAnimation = styled.h1`
 `;
 
 const Button = styled.button`
-  background: linear-gradient(90deg, #000, var(--button), #000);
+  background: linear-gradient(90deg, #acabab, var(--button), #acabab);
+  border: none;
+  outline: none;
   padding: 1rem;
   cursor: pointer;
   font-weight: 700;
+  border-radius: 1rem;
 
   :hover {
     background: linear-gradient(

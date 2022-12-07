@@ -8,6 +8,7 @@ import MediaSideBar from "./common/MediaSideBar";
 function App() {
   return (
     <div>
+      <div></div>
       <Navbar />
       <MediaSidebarStyle>
         <MediaSideBar />
