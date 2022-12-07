@@ -41,7 +41,6 @@ const Bookning = () => {
 
   return (
     <Continer>
-      <Right></Right>
       <Left>
         <form onSubmit={handleSubmit}>
           <h4>Online Bookning</h4>
@@ -83,28 +82,32 @@ const Bookning = () => {
       </Left>
 
       <Map>
-        <p>
-          <BsFillTelephoneFill style={{ marginRight: "1rem" }} />
-          +46 7902 345 940
-        </p>
-        <p>
-          <FiMail style={{ marginRight: "1rem" }} />
-          Janken-matene@hotmail.com
-        </p>
-        <p>
-          <VscLocation style={{ marginRight: "1rem" }} size={20} />
-          Helsingborg , 25189 , Södergatan 14
-        </p>
-        <GoogleMapComponent />
+        <div className="text">
+          <p>
+            <BsFillTelephoneFill style={{ marginRight: "1rem" }} />
+            +46 7902 345 940
+          </p>
+          <p>
+            <FiMail style={{ marginRight: "1rem" }} />
+            Janken-matene@hotmail.com
+          </p>
+          <p>
+            <VscLocation style={{ marginRight: "1rem" }} size={20} />
+            Helsingborg , 25189 , Södergatan 14
+          </p>
+        </div>
+        <div>
+          <GoogleMapComponent />
+        </div>
       </Map>
-      <Mail>
+      {/* <Mail>
         <form>
           <h3>Kontakta oss via mejl</h3>
           <input type="text" placeholder="name..." />
           <input type="text" placeholder="email..." />
           <textarea placeholder="message..." />
         </form>
-      </Mail>
+      </Mail> */}
     </Continer>
   );
 };
@@ -113,15 +116,14 @@ export default Bookning;
 
 const Continer = styled.div`
   display: grid;
-  height: 100vh;
   grid-template-columns: repeat(2, 50%);
-  grid-template-areas:
-    "left right"
-    "mail map";
+  grid-template-areas: "left map";
+  margin: 5%;
 
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 `;
 
@@ -195,55 +197,64 @@ const Dropdown = styled.div`
     text-align: center;
   }
 `;
-const Right = styled.div`
-  /* border: 2px solid blue; */
-  grid-area: right;
-  display: flex;
-`;
-const Mail = styled.div`
-  /* border: 2px solid yellow; */
-  grid-area: mail;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// const Right = styled.div`
+//   /* border: 2px solid blue; */
+//   grid-area: right;
+//   display: flex;
+// `;
+// const Mail = styled.div`
+//   /* border: 2px solid yellow; */
+//   grid-area: mail;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 
-  form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--button);
-    width: 330px;
-    border-radius: 10px;
-    padding: 40px 30px;
-    margin-top: 100px;
-    box-shadow: -3px -3px 9px #aaa9a9a2, 3px 3px 7px rgba(147, 149, 151, 0.671);
+//   form {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     border: 1px solid var(--button);
+//     width: 330px;
+//     border-radius: 10px;
+//     padding: 40px 30px;
+//     margin-top: 100px;
+//     box-shadow: -3px -3px 9px #aaa9a9a2, 3px 3px 7px rgba(147, 149, 151, 0.671);
 
-    input {
-      border: none;
-      outline: none;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-      width: 20rem;
-      margin: 0.5rem;
-    }
+//     input {
+//       border: none;
+//       outline: none;
+//       font-size: 1rem;
+//       padding: 0.5rem 1rem;
+//       border-radius: 1rem;
+//       width: 20rem;
+//       margin: 0.5rem;
+//     }
 
-    textarea {
-      border: none;
-      outline: none;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-      width: 20rem;
-      height: 15rem;
-      margin: 0.5rem;
-    }
-  }
-`;
+//     textarea {
+//       border: none;
+//       outline: none;
+//       font-size: 1rem;
+//       padding: 0.5rem 1rem;
+//       border-radius: 1rem;
+//       width: 20rem;
+//       height: 15rem;
+//       margin: 0.5rem;
+//     }
+//   }
+// `;
 const Map = styled.div`
   /* border: 2px solid pink; */
   grid-area: map;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+  }
 `;

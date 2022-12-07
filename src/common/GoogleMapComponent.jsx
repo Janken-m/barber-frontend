@@ -3,11 +3,11 @@
 
 const GoogleMapComponent = () => {
   return (
-    <div className="mapouter">
-      <div className="gmap_canvas">
+    <div>
+      <div>
         <iframe
-          width={652}
-          height={450}
+          width={500}
+          height={400}
           id="gmap_canvas"
           src="https://maps.google.com/maps?q=helsingborg&t=&z=13&ie=UTF8&iwloc=&output=embed"
           frameBorder={0}
