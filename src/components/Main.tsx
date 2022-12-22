@@ -6,9 +6,6 @@ const Main = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <Image>
-        <img src="https://res.cloudinary.com/dylxgsias/image/upload/c_crop,h_1396,x_-200,y_274/v1670375914/BarberShop/ground_kxjdtw.jpg" />
-      </Image>
       <TextPlace>
         <TextAnimation>
           <span>ÖVER 20 ÅRS</span> <span>ERFARENHET</span>
@@ -38,16 +35,6 @@ const Continer = styled.div`
 
   @media screen and (max-width: 768px) {
     position: relative;
-  }
-`;
-
-const Image = styled.div`
-  width: 100%;
-
-  img {
-    object-fit: cover;
-    position: absolute;
-    z-index: -1;
   }
 `;
 

@@ -111,8 +111,7 @@ const RightHamburger = styled.div`
 
 const Hamburger = styled.div`
   position: absolute;
-  background-color: #504f4f;
-  border-radius: 0.5rem;
+  background-color: #111111;
   width: 26vh;
   height: 100vh;
   left: 0;
