@@ -1,41 +1,80 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import "../assets/css/Main.css";
+import Hero from "./Hero";
+import MiddleBar from "./MiddleBar";
 
 const Main = () => {
   const navigate = useNavigate();
   return (
-    <div>
+    <>
       <TextPlace>
         <TextAnimation>
-          <span>ÖVER 20 ÅRS</span> <span>ERFARENHET</span>
+          <span>MORE THAN 20 YEARS</span> <span>EXPERIENCE</span>
         </TextAnimation>
       </TextPlace>
-      <Continer>
-        <div className="wrapper">
-          <h1 className="static-text">
-            Vi ge dig <br /> den <br /> bästa
-          </h1>
-          <h1>
-            STYL <span> FRISYR </span> <span> HÅRVÅRD </span>
-          </h1>
+      <Wrapper>
+        <Continer>
+          <TextLeft>
+            We are looking <br /> to make you <br />{" "}
+            <SpanService>handsome</SpanService>
+          </TextLeft>
+          <p>
+            You will leave lookin' Sharp, relaxed and ready to <br />
+            take on the world, with that swagger in your stride.
+          </p>
           <Button onClick={() => navigate("/bookning")}> Booka Online </Button>
-        </div>
-      </Continer>
-    </div>
+          <img
+            src={require("../assets/svg/nr-1.png")}
+            style={{ paddingTop: "1rem" }}
+            alt=""
+          />
+        </Continer>
+        <RightShape>
+          <img width="60%" src={require("../assets/svg/barber.png")} alt="" />
+        </RightShape>
+      </Wrapper>
+      <MiddleBar />
+      <Hero />
+    </>
   );
 };
 
 export default Main;
 
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
 const Continer = styled.div`
   display: flex;
+  flex-direction: column;
+  place-self: center;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   @media screen and (max-width: 768px) {
     position: relative;
+    padding: 0;
+    margin: 0;
   }
+`;
+
+const SpanService = styled.span`
+  color: var(--button);
+`;
+
+const TextLeft = styled.div`
+  font-size: 4rem;
+  font-weight: bold;
 `;
 
 const TextPlace = styled.div`
@@ -71,12 +110,13 @@ const TextAnimation = styled.h1`
   }
 
   @media screen and (max-width: 768px) {
-    display: none;
+    align-items: center;
+    font-size: 1rem;
   }
 `;
 
 const Button = styled.button`
-  background: linear-gradient(90deg, #acabab, var(--button), #acabab);
+  background: var(--button);
   border: none;
   outline: none;
   padding: 1rem;
@@ -96,5 +136,21 @@ const Button = styled.button`
 
   :active {
     transform: scale(1.2);
+  }
+`;
+
+const RightShape = styled.div`
+  img {
+    background-color: var(--button);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 30%;
+  }
+
+  @media screen and (max-width: 768px) {
+    img {
+      width: 100%;
+    }
   }
 `;

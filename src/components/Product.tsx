@@ -17,7 +17,7 @@ const Product = ({ product, isLoading }: Props) => {
     <>
       <Continer>
         <Card
-          style={{ width: 200, height: 320, display: "" }}
+          style={{ width: 250, height: 330, display: "" }}
           cover={<img alt="product_image" src={product.img} />}
           loading={isLoading ? true : false}
           size={"small"}

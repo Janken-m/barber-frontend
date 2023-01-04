@@ -1,14 +1,20 @@
 :root {
-  --background-color: black;
-  --color: #ffff;
+  --background-color: linear-gradient(200deg, #ebf8e1, #f5efe8);
+  --color: rgb(0, 0, 0);
+  --button-color: #ffffff;
   --font-family: "Roboto", sans-serif;
-  --button: #d7be57;
+  --button: #7b99a6;
+  --Scroll-color: #aeada9;
   margin: 0;
   padding: 0;
 }
 
 body {
-  background-color: var(--background-color);
+  background: var(--background-color);
   color: var(--color);
   font-family: var(--font-family);
+}
+
+button {
+  color: var(--button-color);
 }

@@ -4,7 +4,7 @@ import SearchBox from "../common/SearchBox";
 import { useGetProductsQuery } from "../store/Api";
 import { IProduct } from "../types/IProduct";
 import Product from "./Product";
-import Spinner from "../assets/svg/Spinner";
+const Spinner: string = require("../assets/svg/Spinner.svg").default;
 
 const ProductsList = () => {
   const { data: Products = [], isLoading } = useGetProductsQuery("products");
@@ -39,8 +39,7 @@ const ProductsList = () => {
                   justifyContent: "center",
                 }}
               >
-                {" "}
-                <Spinner />{" "}
+                <img src={Spinner} alt="" />
               </div>
             )}
             <Product product={product} isLoading={isLoading} />
@@ -56,7 +55,8 @@ export default ProductsList;
 const Continer = styled.div`
   display: grid;
   width: 100%;
-  height: 100vh;
+  margin: 1rem auto;
+  padding: 1rem;
   grid-template-columns: 20% 80%;
   grid-template-areas: "sidebar rightmain";
 
@@ -75,7 +75,9 @@ const Sidebar = styled.div`
 const Right = styled.div`
   grid-area: rightmain;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  margin: 1rem auto;
+  gap: 3rem;
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;

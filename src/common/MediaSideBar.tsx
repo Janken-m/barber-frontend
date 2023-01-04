@@ -1,19 +1,22 @@
-import { FaFacebookSquare } from "react-icons/fa";
-import { BsInstagram, BsWhatsapp } from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsPinterest } from "react-icons/bs";
 import styled from "styled-components";
+import { AiFillTwitterCircle } from "react-icons/ai";
 
 const MediaSideBar = () => {
   return (
     <Continer>
-      <a className="facebook" href="https:/facebook.com/">
-        <FaFacebookSquare />
-      </a>
-      <a className="instagram" href="https:/instagram.com/">
+      <SocialIcon color="3B5999" title="Facebook">
+        <BsFacebook />
+      </SocialIcon>
+      <SocialIcon color="E4405F" title="Instagram">
         <BsInstagram />
-      </a>
-      <a className="whatsapp" href="">
-        <BsWhatsapp />
-      </a>
+      </SocialIcon>
+      <SocialIcon color="55ACEE" title="Twitter">
+        <AiFillTwitterCircle />
+      </SocialIcon>
+      <SocialIcon color="E60023" title="Pinterest">
+        <BsPinterest />
+      </SocialIcon>
     </Continer>
   );
 };
@@ -26,10 +29,13 @@ const Continer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
-  width: 2rem;
-  height: 8rem;
+  width: 2.5rem;
+  height: 9rem;
   margin-left: 1rem;
   border-radius: 1rem;
+  gap: 0.3rem;
+
+  box-shadow: -3px -3px 9px #aaa9a9a2, 3px 3px 7px rgba(147, 149, 151, 0.671);
   cursor: pointer;
 
   .facebook {
@@ -66,4 +72,15 @@ const Continer = styled.div`
   @media screen and (max-width: 768px) {
     display: none;
   }
+`;
+
+const SocialIcon = styled.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: white;
+  background-color: #${(props) => props.color};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

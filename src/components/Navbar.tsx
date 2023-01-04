@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { FaFacebookSquare } from "react-icons/fa";
-import { BsInstagram, BsWhatsapp } from "react-icons/bs";
+import { BsInstagram, BsWhatsapp, BsHandbag } from "react-icons/bs";
+const hairSalong: string = require("../assets/svg/hair-salon.svg").default;
+
 const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -19,6 +21,8 @@ const Navbar = () => {
           LOGO.
         </h1>
 
+        <img src={hairSalong} width="75px" height="75px" alt="" />
+
         <RightHamburger>
           <AiOutlineMenu
             size={20}
@@ -29,12 +33,12 @@ const Navbar = () => {
             <Hamburger>
               <AiOutlineClose
                 size={20}
-                color="white"
+                color="black"
                 onClick={() => setOpen(!open)}
                 style={{ position: "absolute", right: "1rem", top: "1rem" }}
               />
               <ListItem>
-                <li onClick={() => navigate("/bookning")}>Booka Tid</li>
+                <li onClick={() => navigate("/bookning")}>Book Appointment</li>
                 <li onClick={() => navigate("/products")}> Shop </li>
               </ListItem>
               <ButtonStyle>
@@ -57,8 +61,14 @@ const Navbar = () => {
         </RightHamburger>
 
         <Right>
-          <li onClick={() => navigate("/bookning")}>Booka Tid</li>
+          <li
+            className="Book-Appointment"
+            onClick={() => navigate("/bookning")}
+          >
+            Book Appointment
+          </li>
           <li onClick={() => navigate("/products")}> Shop </li>
+          <BsHandbag size={20} color="black" />
         </Right>
       </Continer>
     </>
@@ -70,6 +80,7 @@ export default Navbar;
 const Continer = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
 `;
 
 const Right = styled.ul`
@@ -77,6 +88,8 @@ const Right = styled.ul`
   justify-content: center;
   list-style: none;
   align-items: center;
+  font-weight: bold;
+  text-transform: uppercase;
   cursor: pointer;
   li {
     display: flex;
@@ -85,6 +98,13 @@ const Right = styled.ul`
     :hover {
       border-bottom: 2px solid var(--button);
     }
+  }
+
+  .Book-Appointment {
+    background: var(--button);
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
   }
 
   @media screen and (max-width: 768px) {
@@ -111,11 +131,20 @@ const RightHamburger = styled.div`
 
 const Hamburger = styled.div`
   position: absolute;
-  background-color: #111111;
-  width: 26vh;
-  height: 100vh;
-  left: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    135deg,
+    rgba(255, 255, 255, 0.1)
+  );
+  backdrop-filter: blur(21px);
+  -webkit-backdrop-filter: blur(21px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 2rem;
+  padding: 2rem;
+  right: 0;
   top: 0;
+  width: 200px;
   z-index: 1;
   cursor: pointer;
 `;
@@ -150,7 +179,7 @@ const ButtonStyle = styled.div`
 
   button {
     border: none;
-    background-color: var(--button);
+    background: var(--button);
     padding: 0.4rem;
     font-weight: 600;
     border-radius: 0.4rem;
